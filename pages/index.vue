@@ -1,7 +1,7 @@
 <template>
   <div class="MainPage">
-    <redirect-news />
     <div class="Header mb-3">
+      <RedirectPopup />
       <page-header :icon="headerItem.icon">
         <t-i18n>{{ headerItem.title }}</t-i18n>
       </page-header>
@@ -32,19 +32,20 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import { MetaInfo } from 'vue-meta'
-import PageHeader from '@/components/PageHeader.vue'
-import WhatsNew from '@/components/WhatsNew.vue'
-import StaticInfo from '@/components/StaticInfo.vue'
-import Data from '@/data/data.json'
-import News from '@/data/news.json'
-import ConfirmedCasesDetailsCard from '@/components/cards/ConfirmedCasesDetailsCard.vue'
-import ConfirmedCasesNumberCard from '@/components/cards/ConfirmedCasesNumberCard.vue'
-import ConfirmedCasesAttributesCard from '@/components/cards/ConfirmedCasesAttributesCard.vue'
-import RedirectNews from '@/components/RedirectNews.vue'
-import { convertDatetimeToISO8601Format } from '@/utils/formatDate'
-import TI18n from '@/components/TI18n.vue'
+import Vue from "vue";
+import { MetaInfo } from "vue-meta";
+import PageHeader from "@/components/PageHeader.vue";
+import WhatsNew from "@/components/WhatsNew.vue";
+import StaticInfo from "@/components/StaticInfo.vue";
+import Data from "@/data/data.json";
+import News from "@/data/news.json";
+import ConfirmedCasesDetailsCard from "@/components/cards/ConfirmedCasesDetailsCard.vue";
+import ConfirmedCasesNumberCard from "@/components/cards/ConfirmedCasesNumberCard.vue";
+import ConfirmedCasesAttributesCard from "@/components/cards/ConfirmedCasesAttributesCard.vue";
+import RedirectNews from "@/components/RedirectNews.vue";
+import RedirectPopup from "@/components/RedirectPopup.vue";
+import { convertDatetimeToISO8601Format } from "@/utils/formatDate";
+import TI18n from "@/components/TI18n.vue";
 
 export default Vue.extend({
   components: {
@@ -55,30 +56,31 @@ export default Vue.extend({
     ConfirmedCasesNumberCard,
     ConfirmedCasesAttributesCard,
     RedirectNews,
+    RedirectPopup,
     TI18n
   },
   data() {
     const data = {
       Data,
       headerItem: {
-        icon: 'mdi-chart-timeline-variant',
-        title: this.$t('宮崎県内の最新感染動向')
+        icon: "mdi-chart-timeline-variant",
+        title: this.$t("宮崎県内の最新感染動向")
       },
       newsItems: News.newsItems
-    }
-    return data
+    };
+    return data;
   },
   computed: {
     updatedAt() {
-      return convertDatetimeToISO8601Format(this.$data.Data.lastUpdate)
+      return convertDatetimeToISO8601Format(this.$data.Data.lastUpdate);
     }
   },
   head(): MetaInfo {
     return {
-      title: this.$t('宮崎県内の最新感染動向') as string
-    }
+      title: this.$t("宮崎県内の最新感染動向") as string
+    };
   }
-})
+});
 </script>
 
 <style lang="scss" scoped>
