@@ -1,7 +1,6 @@
 <template>
   <div class="MainPage">
     <RedirectPopup />
-    
     <div class="Header mb-3">
       <page-header :icon="headerItem.icon">
         <t-i18n>{{ headerItem.title }}</t-i18n>

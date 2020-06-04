@@ -8,7 +8,7 @@
     top
   >
     サーバをNetlifyからロリポップへ移行するため、URLが変更となります。
-    <v-btn text @click="daialogFlag = false">閉じる</v-btn>
+    <v-btn text @click="redirectStart()">新しいURLへ</v-btn>
   </v-snackbar>
 </template>
 
@@ -19,21 +19,19 @@ export default Vue.extend({
   name: "RedirectPopup",
   data() {
     return {
-      daialogTime: 2,
       daialogFlag: true,
       multiLine: true
     };
   },
-  created() {
-    // setInterval(() => {
-    //   this.daialogTime--;
-    //   if (this.daialogTime == 0) {
-    //     this.daialogFlag = true;
-    //   }
-    // }, 1000);
-  },
+  created() {},
   mounted() {},
-  methods: {}
+  methods: {
+    redirectStart() {
+      if (process.browser) {
+        location.href = "https://covid19-miyazaki.digick.jp/";
+      }
+    }
+  }
 });
 </script>
 
