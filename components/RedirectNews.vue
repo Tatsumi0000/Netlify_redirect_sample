@@ -1,5 +1,4 @@
 <template>
-  <!-- <div> -->
   <v-daialog v-model="dialog" width="500" disabled="true">
     <v-card>
       <v-card-title class="headline">
@@ -16,34 +15,33 @@
       <v-btn color="primary" text @click="redirectStart(0)">新しいURLへ</v-btn>
     </v-card>
   </v-daialog>
-  <!-- </div> -->
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue from "vue";
 
 export default Vue.extend({
-  name: 'RedirectNews',
+  name: "RedirectNews",
   data() {
     return {
       redirectTime: 10
-    }
+    };
   },
   created() {
     setInterval(() => {
-      this.redirectTime--
-      this.redirectStart(this.redirectTime)
-    }, 1000)
+      this.redirectTime--;
+      this.redirectStart(this.redirectTime);
+    }, 1000);
   },
   mounted() {},
   methods: {
     redirectStart(redirectTime: number) {
       if (redirectTime <= 0) {
-        if(process.browser){
-          location.href = 'https://covid19-miyazaki.digick.jp/'
+        if (process.browser) {
+          location.href = "https://covid19-miyazaki.digick.jp/";
         }
       }
     }
   }
-})
+});
 </script>
